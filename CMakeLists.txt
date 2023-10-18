@@ -11,7 +11,7 @@ find_package(OpenCV 4 REQUIRED)
 find_package(catkin REQUIRED 
   rospy
   roscpp
-  # roslib      # evaluation of the ROS-package path 
+  roslib      # evaluation of the ROS-package path 
   cv_bridge   # conversion between OpenCV and ROS-messages 
   sensor_msgs # Image ROS-message
 )
