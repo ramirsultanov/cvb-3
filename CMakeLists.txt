@@ -8,11 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## packages ##
 find_package(OpenCV 4 REQUIRED)
 
-find_package(catkin REQUIRED 
+find_package(catkin REQUIRED
   rospy
   roscpp
-  roslib      # evaluation of the ROS-package path 
-  cv_bridge   # conversion between OpenCV and ROS-messages 
+  roslib      # evaluation of the ROS-package path
+  cv_bridge   # conversion between OpenCV and ROS-messages
   sensor_msgs # Image ROS-message
 )
 

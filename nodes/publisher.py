@@ -3,6 +3,9 @@
 
 import rospy
 from sensor_msgs.msg import Image
+import numpy as np
+import cv2
+from cv_bridge import CvBridge
 
 from typing import Final
 
@@ -11,6 +14,15 @@ ROS_NODE_NAME: Final[str] = "publisher"
 
 ROS_PARAM_PUB_RATE: Final[int] = 30
 ROS_IMAGE_TOPIC: Final[str] = "image"
+
+
+def generate_image(width = 320, height = 240):
+  image: cv2.Mat = np.zeros((height, width), dtype = np.uint8)
+  for x in range(height):
+    for y in range(width):
+      image[x][y] = np.random.randint(256)
+  bridge: CvBridge = CvBridge()
+  return bridge.cv2_to_imgmsg(image, encoding="mono8")
 
 
 def main() -> None:
@@ -33,8 +45,8 @@ def main() -> None:
     # Разрешение: 320 x 240 (ширина x высота).
     # Формат пикселей: монохром, 8-бит.
     # Создайте функцию для генерации изображения "generate_image(width = 320, height = 240)".
-    publisher.publish(Image(width=0, height=0, encoding='mono8'))
-    
+    publisher.publish(generate_image(width = 320, height = 240))
+
     rate.sleep()
 
 
